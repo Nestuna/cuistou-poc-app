@@ -1,14 +1,10 @@
 # Cuistou
-<div>
+<div align="center">
   <img src="https://cdn.discordapp.com/attachments/918056502730833922/984549560879808532/Logo_restaurant_illustre_nude_style_vintage.png"
        style="width: 300px; float:left; padding-right:1em"/>
-<p>
-  Cuistou est une application visant à proposer des recettes en accords avec les fruits et legumes de saisons. Elle permet  d'avoir la liste de ses mêmes fruits et legumes et avoir une gestion des recettes favorites.
-
-  Là où cette application se démarque des autres, c'est qu'elle permet d'afficher les commerçants locaux aux alentours par géolocalisation, afin de savoir où trouvers ces fruits et legumes, tout en favorisant le commerce local.
-</p>
 </div>
-<br><br><br><br>
+  Cuistou est une application visant à proposer des recettes en accords avec les fruits et legumes de saisons. Elle permet  d'avoir la liste de ses mêmes fruits et legumes et avoir une gestion des recettes favorites.
+  Là où cette application se démarque des autres, c'est qu'elle permet d'afficher les commerçants locaux aux alentours par géolocalisation, afin de savoir où trouvers ces fruits et legumes, tout en favorisant le commerce local.
 
 ***
 ## APIs et sources tierces
