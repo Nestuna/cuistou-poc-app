@@ -68,10 +68,8 @@ const CardRecipe = () => {
             // subheader="September 14, 2016"
           />
 
-          <CardActions 
-          onClick={console.log("cliqué")}
-          disableSpacing>
-            <IconButton aria-label="add to favorites">
+          <CardActions onClick={console.log("cliqué")} disableSpacing>
+            <IconButton aria-label="add to favorites" color="#E97F7F">
               <FavoriteIcon />
             </IconButton>
           </CardActions>
