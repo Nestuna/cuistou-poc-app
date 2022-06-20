@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --primary: #81BD7B;
+  --secondary: #FFE8BC;
+  --warn: #E97F7F;
+}
