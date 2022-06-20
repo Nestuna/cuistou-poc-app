@@ -19,4 +19,14 @@ a {
   --primary: #81BD7B;
   --secondary: #FFE8BC;
   --warn: #E97F7F;
+  --text: #444;
+  --link: #777;
+  --background: #FAFAFA;
+  --foreground: #f9f9f9;
+}
+
+/* ---------- Global Classes */
+.container {
+  padding: 1rem;
+  margin: 1rem;
 }
