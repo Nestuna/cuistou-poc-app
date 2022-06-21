@@ -10,6 +10,7 @@
   },
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.2",
@@ -29,10 +30,22 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
 >>>>>>> 180821f (page login)
+=======
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.4",
+    "@mui/styled-engine-sc": "^5.8.0",
+    "next": "12.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+>>>>>>> 896b797 (pages de connexions et d'inscriptions)
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "eslint": "8.16.0",
+    "@types/node": "^18.0.0",
+    "eslint": "8.18.0",
     "eslint-config-next": "12.1.6"
   }
 }
+
