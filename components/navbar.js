@@ -18,7 +18,7 @@ export default function Navbar() {
     { route:'/liste', label:  'fruits and vegetables' },
     { route:'/signin', label: 'sign in' }
   ];
-  const logo = require('../assets/logo2.png');
+  const logo ='/images/logo2.png'
 
   return (
     <AppBar sx={{ background: "var(--foreground)" }}>
