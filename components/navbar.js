@@ -7,32 +7,32 @@ import {
   Container,
   Divider,
   Typography,
+  Box,
 } from "@mui/material";
 import React from "react";
+import Image from 'next/image';
 
 export default function Navbar() {
   const navItems = [
-    { route: '/', label: 'home' },
-    { route:'/reciepes', label: 'reciepes' },
-    { route:'/food', label:  'fruits and vegetables' },
-    { route:'/favorites', label: 'favorites' },
-    { route:'/login', label: 'login' }
+    { route:'/recipes', label: 'recipes' },
+    { route:'/liste', label:  'fruits and vegetables' },
+    { route:'/signin', label: 'sign in' }
   ];
-  const logo = require('../assets/logo.png');
+  const logo = require('../assets/logo2.png');
 
   return (
     <AppBar sx={{ background: "var(--foreground)" }}>
       <Container maxWidth="xl">
         <Toolbar>
-          <img src={logo} alt="logo" />
-          <Typography variant="h3" sx={{ color: "var(--text)", flexGrow: 1 }}>
+          <Typography variant="h4" sx={{ color: "var(--text)", mr: '.3em' }}>
             Cuistou
           </Typography>
+          <Image src={logo} alt="logo" width="43" height="43"/>
+          <Box sx={{ flexGrow: 1 }} />
           <Stack
             direction="row"
             spacing={{ sm: 3 }}
-            sx={{ flexGrow: 0, display: "flex" }}
-          >
+            sx={{ flexGrow: 0, display: "flex" }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ fontSize: "1rem" }}>
                 <Link href={ item.route } sx={{ color: "var(--text)" }} underline="none">

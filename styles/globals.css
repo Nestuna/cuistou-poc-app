@@ -21,8 +21,8 @@ a {
   --warn: #E97F7F;
   --text: #444;
   --link: #777;
-  --background: #FAFAFA;
-  --foreground: #f9f9f9;
+  --background: #f9f9f9;
+  --foreground:  #FAFAFA;
 }
 
 /* ---------- Global Classes */
