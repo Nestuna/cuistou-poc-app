@@ -32,10 +32,24 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+
+    fetch('/api/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          email: data.get('email'),
+          password: data.get('password'),
+        }
+      })
+    }).then((res) => {
+      //faire la redirection ICI
+      console.log(res)
+    })
+
   };
 
   return (
@@ -82,7 +96,7 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              color = "success"
+              color="success"
             >
               S'inscrire
             </Button>

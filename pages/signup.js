@@ -34,7 +34,10 @@ export default function SignUp() {
                     password : data.password
                 }
             })
-        });
+        }).then((res) => {
+          //Faire la redirection ICI
+          console.log(res)
+        })
 
   }            
 
