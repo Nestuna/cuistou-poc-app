@@ -10,37 +10,38 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useForm } from "react-hook-form"
 
 const theme = createTheme()
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    //   fetch('/api/signup', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
 
-    //     body: JSON.stringify({
-    //         user: {
-    //             firstname : data.get('firstname'),
-    //             email: data.get('email'),
-    //             lastname : data.get('lastname'),
-    //             password : data.get('password')
-    //         }
-    //     })
-    // });
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    })
-  }
+  const {register, handleSubmit} = useForm()
+  const onSubmit = (data) => 
+   {
+
+    fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+    
+            body: JSON.stringify({
+                user: {
+                    firstname : data.firstName,
+                    lastname : data.lastName,
+                    email: data.email,
+                    password : data.password
+                }
+            })
+        });
+
+  }            
 
   return (
     <ThemeProvider theme={theme}>
       <Container
+      
         component='main'
         maxWidth='xs'
         style={{ boxShadow: '0 8px 20px #8fa8bf59', padding: '32px' }}
@@ -63,19 +64,20 @@ export default function SignUp() {
           <Box
             component='form'
             noValidate
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  required
                   autoComplete='given-name'
                   name='firstName'
-                  required
                   fullWidth
                   id='firstName'
                   label='Nom'
                   autoFocus
+                  {...register("firstName")}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -83,9 +85,10 @@ export default function SignUp() {
                   required
                   fullWidth
                   id='lastName'
-                  label='Last Name'
-                  name='Prénoms'
+                  label='Prenoms'
+                  name='lastName'
                   autoComplete='family-name'
+                  {...register("lastName")}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -96,6 +99,7 @@ export default function SignUp() {
                   label='Votre mail'
                   name='email'
                   autoComplete='email'
+                  {...register("email")}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -107,11 +111,13 @@ export default function SignUp() {
                   type='password'
                   id='password'
                   autoComplete='new-password'
+                  {...register("password")}
                 />
               </Grid>
             </Grid>
             <Button
               type='submit'
+              onSubmit={handleSubmit(onSubmit)}
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
@@ -128,6 +134,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
+        
       </Container>
     </ThemeProvider>
   )
