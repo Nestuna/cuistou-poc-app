@@ -14,3 +14,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --primary: #81BD7B;
+  --secondary: #FFE8BC;
+  --warn: #E97F7F;
+  --text: #444;
+  --link: #777;
+  --background: #f9f9f9;
+  --foreground:  #FAFAFA;
+}
+
+/* ---------- Global Classes */
+.container {
+  padding: 1rem;
+  margin: 1rem;
+}

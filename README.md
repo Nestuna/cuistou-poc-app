@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cuistou
+<div align="center">
+  <img src="https://cdn.discordapp.com/attachments/918056502730833922/984549560879808532/Logo_restaurant_illustre_nude_style_vintage.png"
+       style="width: 300px; float:left; padding-right:1em"/>
+</div>
+  Cuistou est une application visant à proposer des recettes en accord avec les fruits et légumes de saisons. Elle permet  d'avoir la liste de ses mêmes fruits et légumes et avoir une gestion des recettes favorites.
+  Là où cette application se démarque des autres, c'est qu'elle permet d'afficher les commerçants locaux aux alentours par géolocalisation, afin de savoir où trouver ces fruits et légumes, tout en favorisant le commerce local.
 
-## Getting Started
+***
+## APIs et sources tierces
+Pour les fruits et légumes de saisons, nous n'avons malheureusement pas trouver d'API public. Ainsi, nous utilisons [la page de référence de l'Association des Diététiciens du Royaume-Uni](https://www.bda.uk.com/food-health/your-health/sustainable-diets/seasonal-fruit-and-veg-a-handy-guide.html), avec laquelle nous utilisons la technique du scraping afin d'extraire les informations utiles.
 
-First, run the development server:
+Pour les recettes, nous utilisons l'API public [spoonacular](https://spoonacular.com/food-api/docs).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Stack
+- Next.js
+- MUI
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Lancer l'app
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Après avoir cloner le projet, installer les paquets necessaires:
+``` $ npm install ```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Puis lancer le projet comme une application react classique:
+``` $ npm run start ```
