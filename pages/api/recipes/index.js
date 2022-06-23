@@ -4,7 +4,7 @@ export default async (req, res) => {
   const url = baseUrl + new URLSearchParams({
     apiKey,
     ranking: 1,
-    number: 2
+    number: 5
   })
   const ingredientsArr = req.query.ingredients.split(',')
   const ingredientsStr = ingredientsArr.join(',+')

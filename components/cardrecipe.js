@@ -40,6 +40,8 @@ const CardRecipe = (props) => {
     const fetchInfos = async () => {
       const res = await fetch(`http://localhost:3000/api/recipes/${item.id}/information`)
       const infos = await res.json()
+      infos.instructions = parse(infos.instructions)
+      infos.summary = parse(infos.summary)
       setInfos(infos)
     }
     fetchInfos()
@@ -76,7 +78,7 @@ const CardRecipe = (props) => {
               sx={{ maxHeight: 60, overflow: "hidden" }}
               variant="body2"
             >
-              { parse(infos.summary) }
+              { infos.summary }
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
               <CardActions disableSpacing>
@@ -97,7 +99,7 @@ const CardRecipe = (props) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Instructions :</Typography>
-            <Typography>{ parse(infos.instructions) }</Typography>
+            <Typography>{ infos.instructions }</Typography>
           </CardContent>
         </Collapse>
       </Box>
