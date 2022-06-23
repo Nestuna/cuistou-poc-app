@@ -18,14 +18,12 @@ const Recipes = () => {
       setRecettes(data);
     });
   }, []);
-  console.log(recettes);
 
-  const addFavorite = (recipe) => {
-    const idRecipe = recipe.id;
-    const newId = [...id, idRecipe];
-    setId(newId);
-    console.log(id);
-  };
+  // const addFavorite = (recipe) => {
+  //   const idRecipe = recipe.id;
+  //   const newId = [...id, idRecipe];
+  //   setId(newId);
+  // };
 
   return (
     <Container>
