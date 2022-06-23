@@ -26,15 +26,25 @@ const ExpandMore = styled((props) => {
 }));
 
 const CardRecipe = (props) => {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   const { item } = props;
+
+  // const itemInstruction = item.instructions.replace("<b>", "");
+  const parse = require("html-react-parser");
   return (
-    <Card sx={{ maxWidth: 900, maxHeight: 200, display: "flex" }}>
+    <Card
+      sx={{
+        maxWidth: 900,
+        maxHeight: expanded ? "auto" : 240,
+        display: "flex",
+        mb: "1em",
+      }}
+    >
       <Box
         sx={{
           padding: 3,
@@ -47,19 +57,9 @@ const CardRecipe = (props) => {
         </Box>
       </Box>
       <Box sx={{ flexDirection: "column" }}>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex" }}>
           <CardHeader title={item.title} />
-          <Box>
-            {item.cheap ? (
-              <AttachMoneyIcon sx={{ color: "var(--primary)" }} />
-            ) : (
-              <Box sx={{ padding: 3 }}>
-                <AttachMoneyIcon sx={{ color: "var(--primary)" }} />
-                <AttachMoneyIcon sx={{ color: "var(--primary)" }} />
-              </Box>
-            )}
-          </Box>
-
+          <Box sx={{ flexGrow: 1 }} />
           <CardActions onClick={console.log("cliqué")} disableSpacing>
             <IconButton
               aria-label="add to favorites"
@@ -75,29 +75,29 @@ const CardRecipe = (props) => {
             <Typography
               sx={{ maxHeight: 60, overflow: "hidden" }}
               variant="body2"
-              color="text.secondary"
             >
-              {item.summary}
+              {parse(item.summary)}
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <IconButton aria-label="expend">
-                <ExpandMore
-                  expand={expanded}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </ExpandMore>
-              </IconButton>
+              <CardActions disableSpacing>
+                <IconButton aria-label="expend">
+                  <ExpandMore
+                    expand={expanded}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label="show more"
+                  >
+                    <ExpandMoreIcon />
+                  </ExpandMore>
+                </IconButton>
+              </CardActions>
             </Box>
           </Box>
         </CardContent>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Instruction:</Typography>
-            <Typography paragraph>{item.instructions}</Typography>
-            
+            <Typography paragraph>Instructions :</Typography>
+            <Typography>{parse(item.instructions)}</Typography>
           </CardContent>
         </Collapse>
       </Box>
