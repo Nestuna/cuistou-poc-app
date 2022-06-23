@@ -43,7 +43,7 @@ const CardRecipe = (props) => {
       setInfos(infos)
     }
     fetchInfos()
-  }, [infos])
+  }, [])
 
   console.log(infos);
   return (
@@ -76,7 +76,7 @@ const CardRecipe = (props) => {
               sx={{ maxHeight: 60, overflow: "hidden" }}
               variant="body2"
             >
-              { infos.summary }
+              { parse(infos.summary) }
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
               <CardActions disableSpacing>
