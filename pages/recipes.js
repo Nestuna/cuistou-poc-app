@@ -74,6 +74,9 @@ const Recipes = () => {
       const ingredientsStr = ingredients.join(',').toLowerCase()
       const res3 = await fetch('http://localhost:3000/api/recipes?ingredients=' + ingredientsStr)
       const recipes = await res3.json()
+
+
+      console.log(recipes)
       setRecettes({ recipes })
     }
      fetchFruitsAndVegetables().catch(err => console.error(err))

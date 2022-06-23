@@ -14,15 +14,16 @@ export default async (req, res) => {
 
 
     if (user.length === 0) {
-        return res.status(404).send({
+        return res.status(404).json({
             success: 0
         })
     } else if (bcrypt.compareSync(password, user[0].password)) {
-        return res.status(200).send({
+        return res.status(200).json({
+            user: user,
             success: 1
         })
     } else {
-        return res.status(401).send({
+        return res.status(401).json({
             success: -1
         })
     }

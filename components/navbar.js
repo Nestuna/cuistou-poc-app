@@ -13,12 +13,25 @@ import React from "react";
 import Image from 'next/image';
 
 export default function Navbar() {
+
+  const [isLogin , setIsLogin ] = React.useState(false)
+
+
+  React.useEffect(() => {
+    let user = window.sessionStorage.getItem('user')
+    if(user !== null ){
+      setIsLogin(true)
+    }
+  } , [])
+
+
   const navItems = [
     { route:'/recipes', label: 'recipes' },
     { route:'/liste', label:  'fruits and vegetables' },
-    { route:'/signin', label: 'sign in' }
+    { route: isLogin ? '/signout' : '/signin', label: isLogin ? 'sign out' : 'sign in' }
   ];
   const logo ='/images/logo2.png'
+
 
   return (
     <AppBar sx={{ background: "var(--foreground)" }}>

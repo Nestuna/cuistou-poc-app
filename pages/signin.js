@@ -33,8 +33,10 @@ export default function SignIn() {
           password: data.get('password'),
         }
       })
-    }).then((res) => {
+    }).then(async (res) => {
+      let data = await res.json()
       if (res.status === 200) {
+        window.sessionStorage.setItem('user' , JSON.stringify(data.user))
         router.push('/recipes')
       } else {
        setErrorMessage('Password is incorrect or user does\'nt exist !')
