@@ -30,3 +30,7 @@ a {
   padding: 1rem;
   margin: 1rem;
 }
+.recipe-image {
+  width: 240px;
+  height: 150px;
+}

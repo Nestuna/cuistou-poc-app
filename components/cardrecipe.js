@@ -12,7 +12,8 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Box from "@mui/material/Box";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,16 +27,25 @@ const ExpandMore = styled((props) => {
 }));
 
 const CardRecipe = (props) => {
+  const { item } = props;
+  const [infos, setInfos] = useState({})
   const [expanded, setExpanded] = useState(false);
+  const parse = require("html-react-parser");
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
+  }
 
-  const { item } = props;
+  useEffect(() => {
+    const fetchInfos = async () => {
+      const res = await fetch(`http://localhost:3000/api/recipes/${item.id}/information`)
+      const infos = await res.json()
+      setInfos(infos)
+    }
+    fetchInfos()
+  }, [infos])
 
-  // const itemInstruction = item.instructions.replace("<b>", "");
-  const parse = require("html-react-parser");
+  console.log(infos);
   return (
     <Card
       sx={{
@@ -48,39 +58,29 @@ const CardRecipe = (props) => {
       <Box
         sx={{
           padding: 3,
+          maxHeight: expanded ? "auto" : 240
         }}
       >
         <Box sx={{ padding: "auto" }}>
           <img
+            class="recipe-image"
             src={`https://spoonacular.com/recipeImages/${item.id}-240x150.jpg`}
           ></img>
         </Box>
       </Box>
       <Box sx={{ flexDirection: "column" }}>
-        <Box sx={{ display: "flex" }}>
-          <CardHeader title={item.title} />
-          <Box sx={{ flexGrow: 1 }} />
-          <CardActions onClick={console.log("cliqué")} disableSpacing>
-            <IconButton
-              aria-label="add to favorites"
-              sx={{ color: "var( --warn)" }}
-            >
-              <FavoriteIcon />
-            </IconButton>
-          </CardActions>
-        </Box>
-
+        <CardHeader title={item.title} />
         <CardContent>
           <Box>
             <Typography
               sx={{ maxHeight: 60, overflow: "hidden" }}
               variant="body2"
             >
-              {parse(item.summary)}
+              { infos.summary }
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
               <CardActions disableSpacing>
-                <IconButton aria-label="expend">
+                <IconButton aria-label="expand">
                   <ExpandMore
                     expand={expanded}
                     onClick={handleExpandClick}
@@ -97,7 +97,7 @@ const CardRecipe = (props) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Instructions :</Typography>
-            <Typography>{parse(item.instructions)}</Typography>
+            <Typography>{ parse(infos.instructions) }</Typography>
           </CardContent>
         </Collapse>
       </Box>
