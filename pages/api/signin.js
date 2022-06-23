@@ -26,8 +26,4 @@ export default async (req, res) => {
             success: -1
         })
     }
-
-
-
-
 }

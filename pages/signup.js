@@ -9,15 +9,16 @@ import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useForm } from "react-hook-form"
-
-const theme = createTheme()
+import { useRouter } from 'next/router'
 
 export default function SignUp() {
-
+  const [errorMessage, setErrorMessage] = React.useState('');
   const {register, handleSubmit} = useForm()
-  const onSubmit = (data) => 
+  const router = useRouter()
+
+
+  const onSubmit = (data) =>
    {
 
     fetch('/api/signup', {
@@ -25,7 +26,7 @@ export default function SignUp() {
             headers: {
                 'Content-Type': 'application/json'
             },
-    
+
             body: JSON.stringify({
                 user: {
                     firstname : data.firstName,
@@ -35,16 +36,17 @@ export default function SignUp() {
                 }
             })
         }).then((res) => {
-          //Faire la redirection ICI
-          console.log(res)
+          if (res.status === 200) {
+            router.push('/recipes')
+          } else {
+           setErrorMessage('Error on sign up. Please try again.')
+          }
         })
 
-  }            
+  }
 
   return (
-    <ThemeProvider theme={theme}>
       <Container
-      
         component='main'
         maxWidth='xs'
         style={{ boxShadow: '0 8px 20px #8fa8bf59', padding: '32px' }}
@@ -62,7 +64,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-            S'inscrire
+            Sign up
           </Typography>
           <Box
             component='form'
@@ -78,7 +80,7 @@ export default function SignUp() {
                   name='firstName'
                   fullWidth
                   id='firstName'
-                  label='Nom'
+                  label='Firstname'
                   autoFocus
                   {...register("firstName")}
                 />
@@ -110,7 +112,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name='password'
-                  label='Mot de passe'
+                  label='Password'
                   type='password'
                   id='password'
                   autoComplete='new-password'
@@ -131,14 +133,13 @@ export default function SignUp() {
             <Grid container justifyContent='flex-end'>
               <Grid item>
                 <Link href='/signin' variant='body2'>
-                  Dejà un compte? Se connecter
+                  Already an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
+          { errorMessage }
         </Box>
-        
       </Container>
-    </ThemeProvider>
   )
 }
