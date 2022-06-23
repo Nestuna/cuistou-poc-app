@@ -72,17 +72,17 @@ export default function Liste(props) {
     }
 
     return (
-        <Box sx={{ flexGrow: 1, bgcolor: 'var(--background)' }} style={{ paddingLeft: 100, paddingRight: 100 }}>
+        <Box sx={{ flexGrow: 1 }} style={{ paddingLeft: 100, paddingRight: 100 }}>
             <h1 style={{ color: 'var(--text)', justifyContent: 'center', textAlign: 'center' }}>Fruits and vegetables by season</h1>
             <p style={{ color: 'var(--primary)', justifyContent: 'center', textAlign: 'center' }}>Right now it's {season} !</p>
-            
+
             <Grid container spacing={2} style={{ display: 'flex', justifyContent: 'center' }}>
                 <Grid item xs={4}>
                     <Chip label="Fruits" color="success" style={{ margin: 10 }} />
                     {getSeasonFruits.map(fruit =>
 
                     <div key={fruit._id}>
-                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'var(--foreground)' }} 
+                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'var(--foreground)' }}
                         style={{ padding: 0, borderBottom: '1px solid #ccc' }}>
                             <ListItem>
                                 <ListItemText sx={{ color: 'var(--text)' }} primary={fruit.name} />
