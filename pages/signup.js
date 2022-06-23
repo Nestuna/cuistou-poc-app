@@ -128,7 +128,7 @@ export default function SignUp() {
               sx={{ mt: 3, mb: 2 }}
               color='success'
             >
-              S'inscrire
+              Sign up
             </Button>
             <Grid container justifyContent='flex-end'>
               <Grid item>
